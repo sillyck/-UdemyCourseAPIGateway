@@ -14,6 +14,7 @@ public class ApiGatewayConfiguration {
 				.route(p -> p.path("/get")
 						.filters(f -> f.addRequestHeader("MyHeader", "MyURI").addRequestParameter("Param", "MyValue"))
 						.uri("http://httpbin.org:80"))
+				
 				.route(p -> p.path("/currency-exchange/**")
 	                    .uri("lb://currency-exchange"))
 				
@@ -28,6 +29,7 @@ public class ApiGatewayConfiguration {
 	            				"/currency-conversion-new/(?<segment>.*)",
 	            				"/currency-conversion-feign/${segment}"))
 	            		.uri("lb://currency-conversion-service"))
+	            
 	            .build();
 
 	}
